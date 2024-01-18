@@ -9,5 +9,5 @@ root.render(
         <Router basename={process.env.PUBLIC_URL}>
             <App />
         </Router>
-    </React.StrictMode>,
+    </React.StrictMode>
 );

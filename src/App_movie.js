@@ -5,13 +5,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <Home />,
+        path: `/`,
+        element: <Home/>,
     },
     {
-        path: "/movie/:id",
-        element: <Detail />,
+        path: `/movie/:id`,
+        element: <Detail/>,
     },
+
 ]);
 
 function App() {

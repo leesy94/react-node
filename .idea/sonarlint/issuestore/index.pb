@@ -22,3 +22,7 @@ B
 src/App_coin.js,b\5\b5d9f6e3802c82b7c297800bf0528696c3db3e74
 @
 src/App_movie.js,f\b\fb4ff7bd183aab98317927262b13ef34efdd5e14
+C
+src/route/Detail.js,d\e\de67e3ad0521ba3a961a5d6b7224dfb1a3bac427
+G
+src/components/Movie.js,a\3\a38d876aea64ff5600299005b34d8a9344c6d8af
