@@ -4,51 +4,29 @@ import styled from "./App.module.css";
 import { useState , useEffect } from "react";
 
 function App() {
-    let str;
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
+    const [toDo, setToDo] = useState("");
+    const [toDos, setToDos] = useState([]);
+    const onchange = (e) => setToDo((e.target.value));
+    const onSubmit = (e) => {
+        e.preventDefault();
+        if(toDo == "") {
+            return ;
+        }
+        setToDos((currentArray) => [toDo, ...currentArray]);
+        setToDo("");
 
-  const onClick = () => setValue((prev) => prev + 1);
-  const onChange = (event) => setKeyword(event.target.value);
-  console.log("i run all the time");
-  const iRunOnlyOnce = () => {
-      console.log("i run only once");
-  };
-  useEffect(iRunOnlyOnce,[]);
-  useEffect(() => {
-    console.log("i run when 'counter' changes");
-  }, [counter]);
-    useEffect(() => {
-        console.log("i run when '"+keyword+"' changes");
-    }, [keyword]);
-    useEffect(() => {
-        console.log("i run when 'counter,keyword' changes");
-    }, [counter,keyword]);
-  return (
-    <div>
-        <input value={keyword} onChange={onChange} type="text" placeholder="Search here..."/>
-      <h1 className={styled.title}>{counter}</h1>
-      <button onClick={onClick}>click me</button>
-        {/*<Button onClick={onClick} text={"click me"}/>*/}
+        //console.log(toDos);
+    }
+    return <div>
+        <h3>My To Do ({toDos.length})</h3>
+        <form action="" onSubmit={onSubmit}>
+        <input type="text" onChange={onchange} value={toDo} placeholder="write here"/>
+        <button>add</button>
+        </form>
+        <hr/>
+        <ul>
+        {toDos.map((item,index) => <li key={index}>{item}</li>)}
+        </ul>
     </div>
-  );
 }
-function App2() {
-    const [show, setShow] = useState(false);
-    const onClick = () => setShow((prev) => !prev)
-  return (
-    <div>
-        {show ? <Hello/> : null}
-        <button onClick={onClick}>{show ? "Hide" : "Show"}</button>
-    </div>
-  );
-}
-
-function Hello() {
-    useEffect(() => {
-        console.log("create: )");
-        return () => console.log("destroy : (");
-    }, []);
-    return <h1>Hello</h1>
-}
-export default App2;
+export default App;
